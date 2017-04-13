@@ -36,7 +36,7 @@ RUN docker-php-ext-configure gd \
     docker-php-ext-install gd
 
 # Install ZIP
-RUN pecl install zip && docker-php-ext-enable zip
+# RUN pecl install zip && docker-php-ext-enable zip
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php
