@@ -28,6 +28,9 @@ RUN docker-php-ext-install mcrypt
 # Install the PHP zip extention
 RUN docker-php-ext-install zip
 
+# Install Xdebug
+RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
+
 # Install the PHP pdo_mysql extention
 RUN docker-php-ext-install pdo_mysql
 
