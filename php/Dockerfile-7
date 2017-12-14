@@ -20,6 +20,7 @@ RUN apt-get update && \
         libssl-dev \
         libmcrypt-dev \
         zip \
+        mysql-client \
         git-ftp
 
 # Install the PHP mcrypt extention
