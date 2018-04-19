@@ -7,7 +7,6 @@ RUN apt-get update && \
         curl \
         nodejs \
         nodejs-legacy \
-        npm \
         openssh-client \
         rsync \
         build-essential \
@@ -60,6 +59,7 @@ RUN mv phplint /usr/local/bin/phplint
 RUN chmod a+x /usr/local/bin/phplint
 
 # Update nodejs to stable version
+RUN apt-get instal -y npm
 RUN npm cache clean -f
 RUN npm install -g n
 RUN n stable
