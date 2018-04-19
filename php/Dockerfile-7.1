@@ -35,7 +35,6 @@ RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 # Install the PHP pdo_mysql extention
 RUN docker-php-ext-install pdo_mysql
 
-
 # Install the PHP gd library
 RUN docker-php-ext-configure gd \
         --enable-gd-native-ttf \
@@ -70,6 +69,9 @@ RUN npm install -g gulp
 
 # Install PIP
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-pip.py
+
+# Install the PHP pcntl extention
+RUN docker-php-ext-install pcntl
 
 # SSH configuration
 RUN mkdir -p ~/.ssh
