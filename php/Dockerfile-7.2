@@ -5,7 +5,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         git \
         curl \
-        nodejs \
         nodejs-legacy \
         openssh-client \
         rsync \
@@ -58,8 +57,11 @@ RUN curl -OL https://raw.githubusercontent.com/overtrue/phplint/master/bin/phpli
 RUN mv phplint /usr/local/bin/phplint
 RUN chmod a+x /usr/local/bin/phplint
 
+# Install npm
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN apt-get install -y nodejs
+
 # Update nodejs to stable version
-RUN apt-get install -y npm
 RUN npm cache clean -f
 RUN npm install -g n
 RUN n stable
