@@ -71,6 +71,8 @@ RUN npm install -g grunt-cli
 RUN gem update --system
 RUN gem install sass compass oily_png
 
+# Install the PHP pcntl extention
+RUN docker-php-ext-install pcntl
 
 # SSH configuration
 RUN mkdir -p ~/.ssh
