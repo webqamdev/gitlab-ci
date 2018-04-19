@@ -57,7 +57,7 @@ RUN curl -OL https://raw.githubusercontent.com/overtrue/phplint/master/bin/phpli
 RUN mv phplint /usr/local/bin/phplint
 RUN chmod a+x /usr/local/bin/phplint
 
-# Install npm
+# Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
