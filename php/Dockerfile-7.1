@@ -22,6 +22,11 @@ RUN apt-get update && \
         git-ftp \
         libmagickwand-dev
 
+# Install nodejs
+RUN apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_10.x | bash \
+    && apt-get install -y nodejs
+
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
 
@@ -57,10 +62,6 @@ RUN chmod a+x /usr/local/bin/phpcs
 RUN curl -OL https://raw.githubusercontent.com/overtrue/phplint/master/bin/phplint
 RUN mv phplint /usr/local/bin/phplint
 RUN chmod a+x /usr/local/bin/phplint
-
-# Update nodejs to stable version
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-RUN apt-get install -y nodejs
 
 # Install Gulp
 RUN npm install -g gulp
