@@ -20,7 +20,8 @@ RUN apt-get update && \
         libmcrypt-dev \
         zip \
         mysql-client \
-        git-ftp
+        git-ftp \
+        libmagickwand-dev
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
@@ -73,9 +74,6 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-
 RUN docker-php-ext-install pcntl
 
 # Install Imagemagick & PHP Imagick ext
-RUN apt-get update && apt-get install -y \
-        libmagickwand-dev --no-install-recommends
-
 RUN pecl install imagick && docker-php-ext-enable imagick
 
 # SSH configuration
