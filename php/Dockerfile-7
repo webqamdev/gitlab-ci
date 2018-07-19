@@ -5,9 +5,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         git \
         curl \
-        nodejs \
         nodejs-legacy \
-        npm \
         openssh-client \
         rsync \
         build-essential \
@@ -15,7 +13,7 @@ RUN apt-get update && \
         libz-dev \
         libpq-dev \
         libjpeg-dev \
-        libpng12-dev \
+        libpng-dev \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
@@ -25,6 +23,11 @@ RUN apt-get update && \
         automake \
         libtool \
         nasm
+
+# Install nodejs
+RUN apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+    && apt-get install -y nodejs
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
