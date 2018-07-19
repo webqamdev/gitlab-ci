@@ -21,7 +21,10 @@ RUN apt-get update && \
         libmcrypt-dev \
         zip \
         mysql-client \
-        git-ftp
+        git-ftp \
+        automake \
+        libtool \
+        nasm
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt

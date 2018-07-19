@@ -20,7 +20,10 @@ RUN apt-get update && \
         zip \
         mysql-client \
         git-ftp \
-        libmagickwand-dev
+        libmagickwand-dev \
+        automake \
+        libtool \
+        nasm
 
 # Install nodejs
 RUN apt-get install curl gnupg -yq \

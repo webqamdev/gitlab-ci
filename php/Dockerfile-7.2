@@ -19,7 +19,16 @@ RUN apt-get update && \
         libmcrypt-dev \
         zip \
         mysql-client \
-        git-ftp
+        git-ftp \
+        libmagickwand-dev \
+        automake \
+        libtool \
+        nasm
+
+# Install nodejs
+RUN apt-get install curl gnupg -yq \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+    && apt-get install -y nodejs
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
@@ -57,15 +66,6 @@ RUN curl -OL https://raw.githubusercontent.com/overtrue/phplint/master/bin/phpli
 RUN mv phplint /usr/local/bin/phplint
 RUN chmod a+x /usr/local/bin/phplint
 
-# Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get install -y nodejs
-
-# Update nodejs to stable version
-RUN npm cache clean -f
-RUN npm install -g n
-RUN n stable
-
 # Install Gulp
 RUN npm install -g gulp
 
@@ -74,6 +74,9 @@ RUN curl -O https://bootstrap.pypa.io/get-pip.py && python get-pip.py && rm get-
 
 # Install the PHP pcntl extention
 RUN docker-php-ext-install pcntl
+
+# Install Imagemagick & PHP Imagick ext
+RUN pecl install imagick && docker-php-ext-enable imagick
 
 # SSH configuration
 RUN mkdir -p ~/.ssh
